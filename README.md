@@ -1,14 +1,11 @@
-# problem-solving-env &middot;
-
-Simple environment for solving coding challenges.
+# algoexpert &middot; solutions
 
 ## Table of content
 
-[Stack](#Stack)
-[Prerequisites](#Prerequisites)
-[Setup](#Setup)
-[Scripts](#Scripts)
-[Contributing](#Contributing)
+- [Stack](#stack)
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Scripts](#scripts)
 
 ## Stack
 
