@@ -5,7 +5,7 @@ import { type TestCases } from "../utils/types";
 
 import { nonConstructibleChange } from "./05-non-constructible-change";
 
-test("returns the name of the team with the highest score", () => {
+test("returns the smallest non constructible change", () => {
   const testCases: TestCases<typeof nonConstructibleChange> = [
     [[[]], 1],
     [[[1]], 2],
