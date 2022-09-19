@@ -140,15 +140,13 @@ test("returns the closest value from BST", () => {
     ],
   ];
 
-  testCases
-    .filter((_, idx, arr) => idx === arr.length - 1)
-    .forEach(([args, expected], idx) => {
-      assert.equal(
-        findClosestValueInBst(...args),
-        expected,
-        `failed test case at idx: ${idx}`
-      );
-    });
+  testCases.forEach(([args, expected], idx) => {
+    assert.equal(
+      findClosestValueInBst(...args),
+      expected,
+      `failed test case at idx: ${idx}`
+    );
+  });
 });
 
 test.run();

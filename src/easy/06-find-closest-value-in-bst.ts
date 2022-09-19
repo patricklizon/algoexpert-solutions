@@ -28,6 +28,7 @@
  *
  */
 
+import { isNil } from "../utils";
 import { type Nullable } from "../utils/types";
 
 export class BST {
@@ -43,48 +44,21 @@ export class BST {
 }
 
 export function findClosestValueInBst(tree: BST, target: number): number {
-  return pickPath(tree, target, tree.value);
+  return find(tree, target, tree.value);
 }
 
-function pickPath(
-  node: Nullable<BST>,
+function find(
+  tree: Nullable<BST>,
   target: number,
   closestValue: number
 ): number {
-  if (closestValue === target) return target;
+  if (isNil(tree)) return closestValue;
 
-  const leftDelta = Math.abs((node?.left?.value ?? 0) - target);
-  const rightDelta = Math.abs((node?.right?.value ?? 0) - target);
-
-  // turn left
-  if (leftDelta < rightDelta) {
-    return node?.left
-      ? pickTurn(node.left, target, closestValue)
-      : closestValue;
+  if (Math.abs(target - closestValue) > Math.abs(target - tree.value)) {
+    closestValue = tree.value;
   }
 
-  // turn right
-  if (rightDelta < leftDelta) {
-    return node?.right
-      ? pickTurn(node.right, target, closestValue)
-      : closestValue;
-  }
-
+  if (target < tree.value) return find(tree.left, target, closestValue);
+  if (target > tree.value) return find(tree.right, target, closestValue);
   return closestValue;
-}
-
-function pickTurn(node: BST, target: number, closestValue: number): number {
-  if (isNil(node)) return closestValue;
-  const closestDelta = Math.abs(closestValue - target);
-  const turnDelta = Math.abs(node.value - target);
-
-  return pickPath(
-    node,
-    target,
-    closestDelta < turnDelta ? closestValue : node.value
-  );
-}
-
-function isNil(x: unknown): x is null | undefined {
-  return x === null || x === undefined;
 }
