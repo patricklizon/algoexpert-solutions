@@ -29,28 +29,17 @@
  */
 
 import { isNil, type Nullable } from "../utils";
-
-export class BST {
-  value: number;
-  left: Nullable<BST>;
-  right: Nullable<BST>;
-
-  constructor(value: number, left: Nullable<BST>, right: Nullable<BST>) {
-    this.value = value;
-    this.left = left;
-    this.right = right;
-  }
-}
+import { BinaryTree } from "../utils/tree";
 
 export function findClosestValueInBst(
-  tree: Readonly<BST>,
+  tree: Readonly<BinaryTree>,
   target: number
 ): number {
   return find(tree, target, tree.value);
 }
 
 function find(
-  tree: Readonly<Nullable<BST>>,
+  tree: Readonly<Nullable<BinaryTree>>,
   target: number,
   closestValue: number
 ): number {

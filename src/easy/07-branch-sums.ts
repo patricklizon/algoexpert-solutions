@@ -36,23 +36,8 @@
  *
  */
 
-import { isNil, type Nullable } from "../utils";
-
-class BinaryTree {
-  value: number;
-  left: Nullable<BinaryTree>;
-  right: Nullable<BinaryTree>;
-
-  constructor(
-    value: number,
-    left: Nullable<BinaryTree>,
-    right: Nullable<BinaryTree>
-  ) {
-    this.value = value;
-    this.left = left;
-    this.right = right;
-  }
-}
+import { isNil } from "../utils";
+import { BinaryTree } from "../utils/tree";
 
 export function branchSums(root: Readonly<BinaryTree>): number[] {
   const sums: number[] = [];
