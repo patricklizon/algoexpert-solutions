@@ -1,9 +1,10 @@
 import { test } from "uvu";
 import assert from "uvu/assert";
 
-import type { Nullable, TestCases } from "../utils/types";
+import type { TestCases } from "../utils";
+import { makeTree } from "../utils/tree";
 
-import { findClosestValueInBst, BST } from "./06-find-closest-value-in-bst";
+import { findClosestValueInBst } from "./06-find-closest-value-in-bst";
 
 test("returns the closest value from BST", () => {
   const testCases: TestCases<typeof findClosestValueInBst> = [
@@ -150,45 +151,3 @@ test("returns the closest value from BST", () => {
 });
 
 test.run();
-
-/*
- *
- * UTILS
- *
- */
-
-type TreeSchema = {
-  root: string;
-  nodes: {
-    id: string;
-    left: Nullable<string>;
-    right: Nullable<string>;
-    value: number;
-  }[];
-};
-
-function makeTree(schema: TreeSchema): BST {
-  const rootNode = schema.nodes.find((n) => n.id === schema.root);
-  if (!rootNode) throw new Error(`root node ${schema.root} is not defined`);
-
-  return new BST(
-    rootNode.value,
-    makeNode(schema.nodes, rootNode.left),
-    makeNode(schema.nodes, rootNode.right)
-  );
-}
-
-function makeNode(
-  nodes: TreeSchema["nodes"],
-  id: Nullable<string>
-): Nullable<BST> {
-  if (!id) return null;
-  const node = nodes.find((n) => n.id === id);
-  if (!node) throw new Error(`branch node "${id}" is not defined`);
-
-  return new BST(
-    node.value,
-    makeNode(nodes, node.left),
-    makeNode(nodes, node.right)
-  );
-}

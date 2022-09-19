@@ -1,7 +1,7 @@
 import { test } from "uvu";
 import assert from "uvu/assert";
 
-import { type TestCases } from "../utils/types";
+import { type TestCases } from "../utils";
 
 import { nonConstructibleChange } from "./05-non-constructible-change";
 

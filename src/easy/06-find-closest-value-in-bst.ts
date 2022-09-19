@@ -28,8 +28,7 @@
  *
  */
 
-import { isNil } from "../utils";
-import { type Nullable } from "../utils/types";
+import { isNil, type Nullable } from "../utils";
 
 export class BST {
   value: number;

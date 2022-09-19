@@ -1,7 +1,7 @@
 import { test } from "uvu";
 import assert from "uvu/assert";
 
-import { TestCases } from "../utils/types";
+import { TestCases } from "../utils";
 
 import { twoNumberSum } from "./01-two-number-sum";
 
