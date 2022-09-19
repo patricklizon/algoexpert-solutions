@@ -43,12 +43,15 @@ export class BST {
   }
 }
 
-export function findClosestValueInBst(tree: BST, target: number): number {
+export function findClosestValueInBst(
+  tree: Readonly<BST>,
+  target: number
+): number {
   return find(tree, target, tree.value);
 }
 
 function find(
-  tree: Nullable<BST>,
+  tree: Readonly<Nullable<BST>>,
   target: number,
   closestValue: number
 ): number {
