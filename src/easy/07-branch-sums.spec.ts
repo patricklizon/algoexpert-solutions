@@ -2,7 +2,7 @@ import { test } from "uvu";
 import assert from "uvu/assert";
 
 import type { TestCases } from "../utils";
-import { makeTree } from "../utils/tree";
+import { makeBinaryTree } from "../utils/tree";
 
 import { branchSums } from "./07-branch-sums";
 
@@ -10,7 +10,7 @@ test("sums branches of binary tree", () => {
   const testCases: TestCases<typeof branchSums> = [
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: "3", value: 1 },
             { id: "2", left: "4", right: "5", value: 2 },
@@ -30,7 +30,7 @@ test("sums branches of binary tree", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [{ id: "1", left: null, right: null, value: 1 }],
           root: "1",
         }),
@@ -39,7 +39,7 @@ test("sums branches of binary tree", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: null, value: 1 },
             { id: "2", left: null, right: null, value: 2 },
@@ -51,7 +51,7 @@ test("sums branches of binary tree", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: "3", value: 1 },
             { id: "2", left: null, right: null, value: 2 },
@@ -64,7 +64,7 @@ test("sums branches of binary tree", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "0", left: "9", right: "1", value: 0 },
             { id: "9", left: null, right: null, value: 9 },

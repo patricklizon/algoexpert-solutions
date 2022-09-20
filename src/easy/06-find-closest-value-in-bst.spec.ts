@@ -2,7 +2,7 @@ import { test } from "uvu";
 import assert from "uvu/assert";
 
 import type { TestCases } from "../utils";
-import { makeTree } from "../utils/tree";
+import { makeBinaryTree } from "../utils/tree";
 
 import { findClosestValueInBst } from "./06-find-closest-value-in-bst";
 
@@ -10,7 +10,7 @@ test("returns the closest value from BST", () => {
   const testCases: TestCases<typeof findClosestValueInBst> = [
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "10", left: "5", right: "15", value: 10 },
             { id: "15", left: "13", right: "22", value: 15 },
@@ -30,7 +30,7 @@ test("returns the closest value from BST", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "100", left: "5", right: "502", value: 100 },
             { id: "502", left: "204", right: "55000", value: 502 },
@@ -67,7 +67,7 @@ test("returns the closest value from BST", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "100", left: "5", right: "502", value: 100 },
             { id: "502", left: "204", right: "55000", value: 502 },
@@ -104,7 +104,7 @@ test("returns the closest value from BST", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "100", left: "5", right: "502", value: 100 },
             { id: "502", left: "204", right: "55000", value: 502 },

@@ -2,7 +2,7 @@ import { test } from "uvu";
 import assert from "uvu/assert";
 
 import type { TestCases } from "../utils";
-import { makeTree } from "../utils/tree";
+import { makeBinaryTree } from "../utils/tree";
 
 import { nodeDepths } from "./08-node-depth";
 
@@ -10,7 +10,7 @@ test("sums depths of binary tree's nodes", () => {
   const testCases: TestCases<typeof nodeDepths> = [
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: "3", value: 1 },
             { id: "2", left: "4", right: "5", value: 2 },
@@ -29,7 +29,7 @@ test("sums depths of binary tree's nodes", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [{ id: "1", left: null, right: null, value: 1 }],
           root: "1",
         }),
@@ -38,7 +38,7 @@ test("sums depths of binary tree's nodes", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: null, value: 1 },
             { id: "2", left: null, right: null, value: 2 },
@@ -50,7 +50,7 @@ test("sums depths of binary tree's nodes", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: "3", value: 1 },
             { id: "2", left: null, right: null, value: 2 },
@@ -63,7 +63,7 @@ test("sums depths of binary tree's nodes", () => {
     ],
     [
       [
-        makeTree({
+        makeBinaryTree({
           nodes: [
             { id: "1", left: "2", right: "8", value: 1 },
             { id: "2", left: "3", right: null, value: 2 },

@@ -26,7 +26,7 @@ export class BinaryTree {
   }
 }
 
-export function makeTree(schema: TreeSchema): BinaryTree {
+export function makeBinaryTree(schema: TreeSchema): BinaryTree {
   const rootNode = schema.nodes.find((n) => n.id === schema.root);
   if (!rootNode) throw new Error(`root node ${schema.root} is not defined`);
 
@@ -37,7 +37,7 @@ export function makeTree(schema: TreeSchema): BinaryTree {
   );
 }
 
-export function makeNode(
+function makeNode(
   nodes: TreeSchema["nodes"],
   id: Nullable<string>
 ): Nullable<BinaryTree> {
