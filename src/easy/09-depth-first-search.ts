@@ -33,13 +33,13 @@ Sample Output
 
 import { Graph } from "../utils/graph";
 
-export function depthFirstSearch(graph: Graph<string>): string[] {
+export function depthFirstSearch(graph: Readonly<Graph<string>>): string[] {
   const nodeValues: string[] = [];
   search(graph, nodeValues);
   return nodeValues;
 }
 
-function search(graph: Graph<string>, nodeValues: string[]): void {
+function search(graph: Readonly<Graph<string>>, nodeValues: string[]): void {
   nodeValues.push(graph.value);
   graph.children.forEach((c) => search(c, nodeValues));
 }
