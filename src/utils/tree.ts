@@ -15,14 +15,8 @@ export class BinaryTree {
   left: Nullable<BinaryTree>;
   right: Nullable<BinaryTree>;
 
-  constructor(
-    value: number,
-    left: Nullable<BinaryTree>,
-    right: Nullable<BinaryTree>
-  ) {
+  constructor(value: number) {
     this.value = value;
-    this.left = left;
-    this.right = right;
   }
 }
 
@@ -30,11 +24,12 @@ export function makeBinaryTree(schema: TreeSchema): BinaryTree {
   const rootNode = schema.nodes.find((n) => n.id === schema.root);
   if (!rootNode) throw new Error(`root node ${schema.root} is not defined`);
 
-  return new BinaryTree(
-    rootNode.value,
-    makeNode(schema.nodes, rootNode.left),
-    makeNode(schema.nodes, rootNode.right)
-  );
+  const tree = new BinaryTree(rootNode.value);
+
+  tree.left = makeNode(schema.nodes, rootNode.left);
+  tree.right = makeNode(schema.nodes, rootNode.right);
+
+  return tree;
 }
 
 function makeNode(
@@ -45,9 +40,9 @@ function makeNode(
   const node = nodes.find((n) => n.id === id);
   if (!node) throw new Error(`branch node "${id}" is not defined`);
 
-  return new BinaryTree(
-    node.value,
-    makeNode(nodes, node.left),
-    makeNode(nodes, node.right)
-  );
+  const tree = new BinaryTree(node.value);
+  tree.left = makeNode(nodes, node.left);
+  tree.right = makeNode(nodes, node.right);
+
+  return tree;
 }
