@@ -27,8 +27,6 @@
 
  */
 
-import { isNil } from "../utils";
-
 const cache: Record<number, number> = {
   0: 0,
   1: 0,
@@ -36,9 +34,8 @@ const cache: Record<number, number> = {
 };
 
 export function getNthFib(n: number): number {
-  if (n < 2) return 0;
   // @ts-expect-error: it's a number
-  if (!isNil(cache[n])) return cache[n];
+  if (n in cache) return cache[n];
 
   for (let i = 1; i <= n; i++) {
     // @ts-expect-error: those are numbers
