@@ -31,15 +31,14 @@
 
 type SpecialArray = (number | SpecialArray)[];
 
-export function productSum(array: Readonly<SpecialArray>): number {
-  return calculate(1, array);
-}
-
-function calculate(multiplier: number, arr: Readonly<SpecialArray>): number {
+export function productSum(
+  array: Readonly<SpecialArray>,
+  multiplier = 1
+): number {
   return (
     multiplier *
-    arr.reduce<number>(
-      (sum, x) => sum + (Array.isArray(x) ? calculate(multiplier + 1, x) : x),
+    array.reduce<number>(
+      (sum, x) => sum + (Array.isArray(x) ? productSum(x, multiplier + 1) : x),
       0
     )
   );
