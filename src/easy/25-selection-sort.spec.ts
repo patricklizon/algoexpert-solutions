@@ -3,7 +3,7 @@ import assert from "uvu/assert";
 
 import type { TestCases } from "../utils";
 
-import { selectionSort as fn } from "./24-selection-sort";
+import { selectionSort as fn } from "./25-selection-sort";
 
 test("sorts array using insertion sort algorithm", () => {
   const testCases: TestCases<typeof fn> = [
