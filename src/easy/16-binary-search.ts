@@ -38,12 +38,12 @@ function search(
   leftIdx: number,
   rightIdx: number
 ): number {
-  const idx = Math.floor((leftIdx + rightIdx) / 2);
-  const val = array.at(idx);
+  const middleIdx = Math.floor((leftIdx + rightIdx) / 2);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const val = array.at(middleIdx)!;
 
   if (leftIdx > rightIdx) return -1;
-  if (val === undefined) return -1;
-  if (val === target) return idx;
-  if (val < target) return search(array, target, idx + 1, rightIdx);
-  else return search(array, target, leftIdx, idx - 1);
+  if (val === target) return middleIdx;
+  if (val < target) return search(array, target, middleIdx + 1, rightIdx);
+  else return search(array, target, leftIdx, middleIdx - 1);
 }
