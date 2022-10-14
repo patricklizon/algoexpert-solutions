@@ -132,6 +132,13 @@
     "jest/valid-expect": "off"
   },
   "overrides": [
+    // utils
+    {
+      "files": ["**/utils/**/*.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    },
     // allow default export for configuration files
     {
       "files": ["*.[j|t]s"],
