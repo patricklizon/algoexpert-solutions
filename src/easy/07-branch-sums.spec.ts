@@ -1,13 +1,10 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import type { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 import { makeBinaryTree } from "../utils/tree";
 
-import { branchSums } from "./07-branch-sums";
+import { branchSums as fn } from "./07-branch-sums";
 
 test("sums branches of binary tree", () => {
-  const testCases: TestCases<typeof branchSums> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         makeBinaryTree({
@@ -81,13 +78,5 @@ test("sums branches of binary tree", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      branchSums(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

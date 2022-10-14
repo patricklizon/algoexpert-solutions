@@ -1,13 +1,10 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import type { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 import { makeBinaryTree } from "../utils/tree";
 
-import { findClosestValueInBst } from "./06-find-closest-value-in-bst";
+import { findClosestValueInBst as fn } from "./06-find-closest-value-in-bst";
 
 test("returns the closest value from BST", () => {
-  const testCases: TestCases<typeof findClosestValueInBst> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         makeBinaryTree({
@@ -141,13 +138,5 @@ test("returns the closest value from BST", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      findClosestValueInBst(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

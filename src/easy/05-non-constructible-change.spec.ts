@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, type TestCases } from "../utils";
 
-import { type TestCases } from "../utils";
-
-import { nonConstructibleChange } from "./05-non-constructible-change";
+import { nonConstructibleChange as fn } from "./05-non-constructible-change";
 
 test("returns the smallest non constructible change", () => {
-  const testCases: TestCases<typeof nonConstructibleChange> = [
+  const testCases: TestCases<typeof fn> = [
     [[[]], 1],
     [[[1]], 2],
     [[[2]], 1],
@@ -16,14 +13,5 @@ test("returns the smallest non constructible change", () => {
     [[[1, 1, 2, 3, 5, 7, 22]], 20],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      nonConstructibleChange(...args),
-      expected,
-      `failed test case at idx: ${idx} for args:
-     > [${args[0].join(", ")}]`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

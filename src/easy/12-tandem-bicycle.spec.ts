@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, TestCases } from "../utils";
 
-import type { TestCases } from "../utils";
-
-import { tandemBicycle } from "./12-tandem-bicycle";
+import { tandemBicycle as fn } from "./12-tandem-bicycle";
 
 test("returns fastest or slowest total speed of riders", () => {
-  const testCases: TestCases<typeof tandemBicycle> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         {
@@ -59,13 +56,5 @@ test("returns fastest or slowest total speed of riders", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      tandemBicycle(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

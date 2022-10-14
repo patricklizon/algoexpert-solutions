@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, type TestCases } from "../utils";
 
-import { type TestCases } from "../utils";
-
-import { isValidSubsequence } from "./02-validate-subsequence";
+import { isValidSubsequence as fn } from "./02-validate-subsequence";
 
 test("returns true when the sequence is a subsequence of the array", () => {
-  const testCases: TestCases<typeof isValidSubsequence> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         [1, 2, 3, 4],
@@ -23,19 +20,11 @@ test("returns true when the sequence is a subsequence of the array", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      isValidSubsequence(...args),
-      expected,
-      `failed test case at idx: ${idx} for args:
-     > [${args[0].join(", ")}]
-     > [${args[1].join(", ")}]`
-    );
-  });
+  runTestCases(fn, testCases);
 });
 
 test("returns false when the sequence is not a subsequence of the array", () => {
-  const testCases: TestCases<typeof isValidSubsequence> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         [5, 6, 22, 25, 1, -1, 8, 10],
@@ -52,15 +41,5 @@ test("returns false when the sequence is not a subsequence of the array", () => 
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      isValidSubsequence(...args),
-      expected,
-      `failed test case at idx: ${idx} for args:
-     > [${args[0].join(", ")}]
-     > [${args[1].join(", ")}]`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

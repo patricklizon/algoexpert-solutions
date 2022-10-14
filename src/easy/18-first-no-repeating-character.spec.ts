@@ -1,25 +1,14 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, TestCases } from "../utils";
 
-import type { TestCases } from "../utils";
-
-import { firstNonRepeatingCharacter } from "./18-first-no-repeating-character";
+import { firstNonRepeatingCharacter as fn } from "./18-first-no-repeating-character";
 
 test("returns index of first non repeating character", () => {
-  const testCases: TestCases<typeof firstNonRepeatingCharacter> = [
+  const testCases: TestCases<typeof fn> = [
     [["abcdcaf"], 1],
     [["faadabcbbebdf"], 6],
     [[""], -1],
     [["a"], 0],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      firstNonRepeatingCharacter(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

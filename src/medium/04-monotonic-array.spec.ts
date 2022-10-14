@@ -1,7 +1,4 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 
 import { isMonotonic as fn } from "./04-monotonic-array";
 
@@ -14,9 +11,5 @@ test("checks if array is monotonic", () => {
     [[[-1, -1, -2, -3, -4, -5, -5, -5, -6, -7, -8, -7, -9, -10, -11]], false],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(fn(...args), expected, `failed test case at idx: ${idx}`);
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

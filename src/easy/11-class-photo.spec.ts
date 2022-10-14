@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, TestCases } from "../utils";
 
-import type { TestCases } from "../utils";
-
-import { classPhotos } from "./11-class-photo";
+import { classPhotos as fn } from "./11-class-photo";
 
 test("checks if group photo could be taken according to restrictions", () => {
-  const testCases: TestCases<typeof classPhotos> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         {
@@ -54,13 +51,5 @@ test("checks if group photo could be taken according to restrictions", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      classPhotos(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

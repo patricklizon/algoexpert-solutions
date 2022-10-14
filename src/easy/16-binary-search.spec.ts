@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, TestCases } from "../utils";
 
-import type { TestCases } from "../utils";
-
-import { binarySearch } from "./16-binary-search";
+import { binarySearch as fn } from "./16-binary-search";
 
 test("finds number using binary search algorithm", () => {
-  const testCases: TestCases<typeof binarySearch> = [
+  const testCases: TestCases<typeof fn> = [
     [[[0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 33], 3],
     [[[0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 0], 0],
     [[[0, 1, 21, 33, 45, 45, 61, 71, 72, 73], 1], 1],
@@ -15,13 +12,5 @@ test("finds number using binary search algorithm", () => {
     [[[], 133], -1],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      binarySearch(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

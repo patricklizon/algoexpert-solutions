@@ -1,7 +1,4 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import type { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 
 import { selectionSort as fn } from "./25-selection-sort";
 
@@ -34,9 +31,5 @@ test("sorts array using insertion sort algorithm", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(fn(...args), expected, `failed test case at idx: ${idx}`);
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

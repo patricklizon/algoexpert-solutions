@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, TestCases } from "../utils";
 
-import type { TestCases } from "../utils";
-
-import { bubbleSort } from "./23-bubble-sort";
+import { bubbleSort as fn } from "./23-bubble-sort";
 
 test("sorts array using bubble sort algorithm", () => {
-  const testCases: TestCases<typeof bubbleSort> = [
+  const testCases: TestCases<typeof fn> = [
     [[[1, 17, 43, 12]], [1, 12, 17, 43]],
     [[[1]], [1]],
     [[[]], []],
@@ -34,13 +31,5 @@ test("sorts array using bubble sort algorithm", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      bubbleSort(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

@@ -1,7 +1,4 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 
 import { moveElementToEnd as fn } from "./03-move-element-to-end";
 
@@ -21,9 +18,5 @@ test("moves all instances of element to move at the end of the array", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(fn(...args), expected, `failed test case at idx: ${idx}`);
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

@@ -1,13 +1,10 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import type { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 import { makeGraph } from "../utils/graph";
 
-import { depthFirstSearch } from "./09-depth-first-search";
+import { depthFirstSearch as fn } from "./09-depth-first-search";
 
 test("returns an array of values of the graph's nodes", () => {
-  const testCases: TestCases<typeof depthFirstSearch> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         makeGraph({
@@ -124,13 +121,5 @@ test("returns an array of values of the graph's nodes", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      depthFirstSearch(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

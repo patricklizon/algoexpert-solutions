@@ -1,12 +1,9 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
+import { runTestCases, type TestCases } from "../utils";
 
-import { type TestCases } from "../utils";
-
-import { tournamentWinner } from "./04-tournament-winner";
+import { tournamentWinner as fn } from "./04-tournament-winner";
 
 test("returns the name of the team with the highest score", () => {
-  const testCases: TestCases<typeof tournamentWinner> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         [
@@ -45,15 +42,5 @@ test("returns the name of the team with the highest score", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      tournamentWinner(...args),
-      expected,
-      `failed test case at idx: ${idx} for args:
-     > [${args[0].map((a) => a.join(", ")).join(", ")}]
-     > [${args[1].join(", ")}]`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

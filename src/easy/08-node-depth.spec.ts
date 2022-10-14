@@ -1,13 +1,10 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import type { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 import { makeBinaryTree } from "../utils/tree";
 
-import { nodeDepths } from "./08-node-depth";
+import { nodeDepths as fn } from "./08-node-depth";
 
 test("sums depths of binary tree's nodes", () => {
-  const testCases: TestCases<typeof nodeDepths> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         makeBinaryTree({
@@ -86,13 +83,5 @@ test("sums depths of binary tree's nodes", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      nodeDepths(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

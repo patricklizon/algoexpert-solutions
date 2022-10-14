@@ -1,13 +1,10 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import type { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 import { makeLinkedList } from "../utils/linked-list";
 
-import { removeDuplicatesFromLinkedList } from "./13-remove-duplicates-from-linked-list";
+import { removeDuplicatesFromLinkedList as fn } from "./13-remove-duplicates-from-linked-list";
 
 test("removes duplicates from linked list", () => {
-  const testCases: TestCases<typeof removeDuplicatesFromLinkedList> = [
+  const testCases: TestCases<typeof fn> = [
     [
       [
         makeLinkedList({
@@ -138,13 +135,5 @@ test("removes duplicates from linked list", () => {
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(
-      removeDuplicatesFromLinkedList(...args),
-      expected,
-      `failed test case at idx: ${idx}`
-    );
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();

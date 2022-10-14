@@ -1,7 +1,4 @@
-import { test } from "uvu";
-import assert from "uvu/assert";
-
-import { TestCases } from "../utils";
+import { runTestCases, TestCases } from "../utils";
 
 import { smallestDifference as fn } from "./02-smallest-difference";
 
@@ -23,9 +20,5 @@ test("finds a pair of numbers, one from each array whose absolute difference is 
     ],
   ];
 
-  testCases.forEach(([args, expected], idx) => {
-    assert.equal(fn(...args), expected, `failed test case at idx: ${idx}`);
-  });
+  runTestCases(fn, testCases);
 });
-
-test.run();
