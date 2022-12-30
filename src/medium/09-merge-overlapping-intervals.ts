@@ -53,8 +53,7 @@ function merge(
   const nextSlice = is.slice(1);
 
   if (i[1] >= next[0]) {
-    const end = i[1] > next[1] ? i[1] : next[1];
-    return merge(acc, nextSlice, [i[0], end]);
+    return merge(acc, nextSlice, [i[0], Math.max(i[1], next[1])]);
   }
 
   return merge([...acc, i], nextSlice, next);
