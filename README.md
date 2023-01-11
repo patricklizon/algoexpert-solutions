@@ -1,23 +1,13 @@
-# problem-solving-env &middot;
+# algoexpert.io &middot; ![test workflow](https://github.com/patricklizon/algoexpert-solutions/actions/workflows/test.yml/badge.svg)
 
-Simple environment for solving coding challenges.
+My solutions to algorithmic problems.
 
 ## Table of content
 
-* [Stack](#stack)
 * [Prerequisites](#prerequisites)
 * [Setup](#setup)
 * [Scripts](#scripts)
-
-## Stack
-
-* [TypeScript](https://www.typescriptlang.org/) - typed language build on top of JavaScript
-
-## Tools
-
-* [vitest](https://vitest.dev/) - test framework
-* [eslint](https://eslint.org) - static code analysis
-* [prettier](https://prettier.io) - code formatter
+* [Stack](#stack)
 
 ## Prerequisites
 
@@ -33,7 +23,7 @@ _It's recommended to use node version manger (ie. [fnm](https://github.com/Schni
 npm ci
 
 # Start tests in watch mode
-npm run test:watch
+npm run test
 ```
 
 ## Scripts
@@ -56,3 +46,7 @@ Summary of defined npm scripts.
 | ------------ | -------------------------- |
 | `fix:format` | tries to fix formatting    |
 | `fix:lint`   | tries to fix linter issues |
+
+## Stack
+
+* [TypeScript](https://www.typescriptlang.org/) - typed language build on top of JavaScript
