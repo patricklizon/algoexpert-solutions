@@ -1,4 +1,4 @@
-import { isNil, Nullable } from ".";
+import { type Nullable } from ".";
 
 export type LinkedListSchema<T> = {
   head: string;
@@ -27,7 +27,7 @@ function makeNode<T>(
   id: Nullable<string>
 ): Nullable<LinkedList<T>> {
   const node = nodes.find((n) => n.id === id);
-  if (isNil(node)) return null;
+  if (!node) return null;
 
   return new LinkedList<T>(node.value, makeNode(nodes, node.next));
 }
