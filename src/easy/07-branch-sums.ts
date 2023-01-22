@@ -45,7 +45,11 @@ export function branchSums(root: Readonly<BinaryTree>): number[] {
   return sums;
 }
 
-function sumBranch(tree: BinaryTree, sum: number, sums: number[]): void {
+function sumBranch(
+  tree: Readonly<BinaryTree>,
+  sum: number,
+  sums: number[]
+): void {
   sum += tree.value;
 
   const isLeaf = isNil(tree.left) && isNil(tree.right);

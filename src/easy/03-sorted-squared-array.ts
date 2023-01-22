@@ -6,5 +6,5 @@
  */
 
 export function sortedSquaredArray(array: readonly number[]): number[] {
-  return [...array].map((x) => x ** 2).sort((a, b) => a - b);
+  return array.map((x) => x ** 2).sort((a, b) => a - b);
 }

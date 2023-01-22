@@ -38,8 +38,8 @@
 
 import { BinaryTree } from "../utils/tree";
 
-export function nodeDepths(root: BinaryTree): number {
-  const stack: { node: BinaryTree; depth: number }[] = [];
+export function nodeDepths(root: Readonly<BinaryTree>): number {
+  const stack: Readonly<{ node: BinaryTree; depth: number }>[] = [];
   let sum = 0;
 
   stack.push({ node: root, depth: 0 });

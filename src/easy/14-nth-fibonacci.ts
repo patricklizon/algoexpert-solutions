@@ -27,7 +27,7 @@
 
  */
 
-const cache: Record<number, number> = {
+const cache: { [n: number]: number } = {
   0: 0,
   1: 0,
   2: 1,

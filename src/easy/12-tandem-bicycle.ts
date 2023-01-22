@@ -53,9 +53,12 @@ export function tandemBicycle({
   blueShirtSpeeds: readonly number[];
   fastest: boolean;
 }): number {
-  const sortedReds = [...redShirtSpeeds].sort((a, b) => a - b);
-  const sortedBlues = [...blueShirtSpeeds].sort((a, b) =>
-    fastest ? b - a : a - b
+  const sortAscending = (a: number, b: number): number => a - b;
+  const sortDescending = (a: number, b: number): number => b - a;
+
+  const sortedReds = [...redShirtSpeeds].sort(sortAscending);
+  const sortedBlues = [...blueShirtSpeeds].sort(
+    fastest ? sortDescending : sortAscending
   );
   const fastestOfPair: number[] = [];
 

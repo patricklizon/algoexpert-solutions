@@ -39,19 +39,24 @@ export function classPhotos({
   redShirtHeights,
   blueShirtHeights,
 }: {
-  redShirtHeights: readonly number[];
-  blueShirtHeights: readonly number[];
+  redShirtHeights: readonly [number, ...number[]];
+  blueShirtHeights: readonly [number, ...number[]];
 }): boolean {
-  const sortAscending = (a: number, b: number): number => a - b;
-  const redRow = [...redShirtHeights].sort(sortAscending);
-  const blueRow = [...blueShirtHeights].sort(sortAscending);
+  const descending = (a: number, b: number): number => b - a;
+  const sort = <T extends readonly any[]>(a: T): T =>
+    [...a].sort(descending) as unknown as T;
+
+  const redRow = sort(redShirtHeights);
+  const blueRow = sort(blueShirtHeights);
+  const tallestOfRed = redRow[0];
+  const tallestOfBlue = blueRow[0];
+
   const [frontRow, backRow] =
-    (redRow.at(-1) ?? -1) > (blueRow.at(-1) ?? -1)
-      ? [blueRow, redRow]
-      : [redRow, blueRow];
+    tallestOfRed > tallestOfBlue ? [blueRow, redRow] : [redRow, blueRow];
 
   for (const [idx, x] of frontRow.entries()) {
-    if (x >= (backRow[idx] ?? -1)) return false;
+    if (x >= (backRow.at(idx) ?? -1)) return false;
   }
+
   return true;
 }
