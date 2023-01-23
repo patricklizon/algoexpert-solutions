@@ -36,9 +36,13 @@ export function reverseWordsInString(string: string): string {
   let word = "";
   let char = "";
   for (let idx = string.length - 1; idx >= -1; idx--) {
+    if (idx === -1) {
+      result += word;
+      continue;
+    }
+
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     char = string[idx]!;
-    if (idx === -1) result += word;
     if (char !== " ") word = char + word;
     else {
       result += word + " ";
