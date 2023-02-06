@@ -33,8 +33,10 @@ export function minimumCharactersForWords(words: string[]): string[] {
   }
 
   let result: string[] = [];
+  let arrayOfChars: string[] = [];
   for (const [char, count] of resultMap.entries()) {
-    result = result.concat(Array.from<string>({ length: count }).fill(char));
+    arrayOfChars = Array.from<string>({ length: count }).fill(char);
+    result = result.concat(arrayOfChars);
   }
 
   return result;
