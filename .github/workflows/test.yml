@@ -21,4 +21,4 @@ jobs:
       - run: npm run test:format
       - run: npm run test:types
       - run: npm run test:lint
-      - run: npm test
+      - run: npm test:run
