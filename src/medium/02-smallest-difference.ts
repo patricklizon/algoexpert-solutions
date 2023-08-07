@@ -35,8 +35,9 @@ export function smallestDifference(
   const ascending = (a: number, b: number): number => a - b;
   const arr1 = [...arrayOne].sort(ascending);
   const arr2 = [...arrayTwo].sort(ascending);
+  const pair: [number, number] = [arr1[0]!, arr2[0]!];
 
-  return compute(arr1, arr2, 0, 0, Infinity);
+  return compute(arr1, arr2, 0, 0, Infinity, pair);
 }
 
 function compute(
@@ -45,22 +46,20 @@ function compute(
   arr1Idx: number,
   arr2Idx: number,
   distance: number,
-  pair?: [number, number]
+  pair: [number, number]
 ): [number, number] {
-  const n1 = arr1[arr1Idx]!;
-  const n2 = arr2[arr2Idx]!;
-  pair ??= [n1, n2];
+  const n1 = arr1[arr1Idx];
+  const n2 = arr2[arr2Idx];
 
-  if (isNil(arr1.at(arr1Idx)) || isNil(arr2.at(arr2Idx))) return pair;
-
-  if (n1 - n2 === 0) return [n1, n2];
+  if (isNil(n1) || isNil(n2)) return pair;
+  if (n1 - n2 === 0) return pair;
 
   const nextDistance = Math.abs(n1 - n2);
   if (nextDistance < distance) {
-    distance = nextDistance < distance ? nextDistance : distance;
+    distance = nextDistance;
     pair = [n1, n2];
   }
 
   if (n1 < n2) return compute(arr1, arr2, arr1Idx + 1, arr2Idx, distance, pair);
-  return compute(arr1, arr2, arr1Idx, arr2Idx + 1, distance, pair);
+  else return compute(arr1, arr2, arr1Idx, arr2Idx + 1, distance, pair);
 }
